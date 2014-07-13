@@ -1,0 +1,5 @@
+.quote= brick.quote
+.author= brick.author
+.links
+  %a{ :href => 'javascript:;', :class => 'close-brick-link' } Put it back
+  %a{ :href => promote_brick_path(brick), :data => { :remote => true, :method => :put } } Put it on top! 

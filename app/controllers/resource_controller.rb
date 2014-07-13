@@ -1,0 +1,81 @@
+class ResourceController < ApplicationController
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+
+  before_action :set, only: [:show, :edit, :update, :destroy]
+  before_action :build, only: [:new, :create]
+  before_action :collect, only: :index
+
+  before_action :display, only: [:new, :edit, :show]
+  before_action :persist, only: [:create, :update]
+  before_action :destroy, only: :destroy
+
+  #override me!
+  def self.actions
+	[:index, :new, :create, :show, :edit, :update, :destroy]
+  end
+
+  actions.each do |action|
+    define_method action, ->{}
+  end
+
+  protected
+
+  def set
+    self.resource = model.find(params[:id])
+  end
+
+  def build
+    self.resource = model.new resource_params
+  end
+
+  def collect
+    self.resources = model.all
+  end
+
+  def display
+    respond_with resource
+  end
+
+  def persist
+    resource.persisted? ? resource.update(resource_params) : resource.save
+    respond_with resource
+  end
+
+  def destroy
+    resource.destroy
+  end
+
+  # override me!
+  def permitted_params
+  	model.columns.map(&:name)
+  end
+
+  private
+  
+  def resource
+  	instance_variable_get "@#{controller_name.singularize}"
+  end
+
+  def resource=(value)
+  	instance_variable_set "@#{controller_name.singularize}", value
+  end
+
+  def resources
+  	instance_variable_get "@#{controller_name}"
+  end
+
+  def resources=(value)
+  	instance_variable_set "@#{controller_name}", value
+  end
+
+  def resource_params
+  	params.require(controller_name.singularize.to_sym).permit(permitted_params) rescue {}
+  end
+
+  def model
+  	controller_name.humanize.singularize.constantize
+  end
+
+end

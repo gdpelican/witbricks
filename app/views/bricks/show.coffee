@@ -1,0 +1,1 @@
+$('.view-brick').html("<%= render_partial 'show' %>").show()

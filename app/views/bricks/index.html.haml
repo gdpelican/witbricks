@@ -1,0 +1,8 @@
+.view-brick
+
+.links
+  %a{ :href => new_brick_path, :class => 'create-brick-link', :data => { :remote => true } } Create Brick
+
+.flex-wrapper
+  - @bricks.each do |brick|
+    = render 'preview', brick: brick
