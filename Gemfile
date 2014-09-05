@@ -26,6 +26,7 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem 'dotenv'
+  gem "protractor-rails"
 end
 
 group :test do

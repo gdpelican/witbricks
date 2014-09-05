@@ -47,6 +47,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colorize (0.7.3)
     connection_pool (2.0.0)
     database_cleaner (1.3.0)
     diff-lcs (1.2.5)
@@ -101,6 +102,9 @@ GEM
     optionable (0.2.0)
     origin (2.1.1)
     pg (0.17.1)
+    protractor-rails (0.0.5)
+      colorize
+      railties
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -213,6 +217,7 @@ DEPENDENCIES
   jquery-rails
   mongoid-rspec
   pg
+  protractor-rails
   pry-rails
   rails (= 4.2.0.beta1)
   rails_12factor
