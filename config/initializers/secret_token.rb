@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Netiquette::Application.config.secret_key_base = 'cdad3b86558ee6f776ef0acb3c7f18a14502bc5efc4004b4f129b63b6a501e6d337d37a0c232d5d978b5c5d8c67cec1510f1195454b81203c05f959646e2a5a7'
+Witbricks::Application.config.secret_key_base = 'cdad3b86558ee6f776ef0acb3c7f18a14502bc5efc4004b4f129b63b6a501e6d337d37a0c232d5d978b5c5d8c67cec1510f1195454b81203c05f959646e2a5a7'
