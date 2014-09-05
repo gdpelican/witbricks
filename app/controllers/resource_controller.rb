@@ -5,8 +5,8 @@ class ResourceController < ApplicationController
   before_action :collect, only: :index
 
   before_action :persist, only: [:create, :update]
-  before_action :display, only: [:new, :edit, :show, :create, :update, :index]
-  before_action :destroy, only: :destroy
+  before_action :vaporize, only: :destroy
+  before_action :display
 
   def self.actions
     [:index, :new, :create, :show, :edit, :update, :destroy] # override me!
@@ -36,7 +36,7 @@ class ResourceController < ApplicationController
     resource.persisted? ? resource.update(resource_params) : resource.save
   end
 
-  def destroy
+  def vaporize
     resource.destroy
   end
 
