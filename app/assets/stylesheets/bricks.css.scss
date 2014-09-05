@@ -1,47 +1,53 @@
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body.bricks {
-	background: #3399FF;
-	
-	.view-brick {
-		display: none;
-		position: fixed;
-		z-index: 999;
-		top: 50%;
-		left: 50%;
-		width: 20em;
-		height: 10em;
-		padding: 1em;
-		text-align: center;
-		margin-left: -10em;
-		margin-top: -5em;
-		background: #0066FF;
-		box-shadow: 0 0 5px black;
-	}
+body[ng-app=witbricks] {
+  background: #3399FF;
+  
+  a {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
 
-	.flex-wrapper {
-		display: flex;
-		flex-wrap: wrap-reverse;
-		justify-content: center;
+  .view-brick {
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    width: 20em;
+    height: 10em;
+    padding: 1em;
+    text-align: center;
+    margin-left: -10em;
+    margin-top: -5em;
+    background: #0066FF;
+    box-shadow: 0 0 5px black;
+  }
 
-		.briquette {
+  .flex-wrapper {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
 
-		  position: relative;
-		  bottom: 0;
+    .briquette {
+      &.cloaked { visibility: hidden; }
 
-		  transition: all .5s;
-		  width: 5%;
-		  padding: 1% 0;
-		  margin: .15%;
-		  background: #0066FF;
-		  display: inline-block;
-		  box-shadow: -1px 1px 0 #0033AA;
-		  &:hover { background: #AADD33; }
-		  &:nth-child(36n) { width: 3.5%; }
-		  &.new { bottom: 3em; }
-		}
-	}
+      position: relative;
+      bottom: 0;
+
+      transition: all .5s;
+      width: 5%;
+      padding: 1% 0;
+      margin: .15%;
+      background: #0066FF;
+      display: inline-block;
+      box-shadow: -1px 1px 0 #0033AA;
+      &:hover { background: #AADD33; }
+      &:nth-child(36n) { width: 3.5%; }
+      &.new { bottom: 3em; }
+    }
+  }
 }

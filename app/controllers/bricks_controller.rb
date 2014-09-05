@@ -1,7 +1,5 @@
 class BricksController < ResourceController
 
-  respond_to :html, :json, :js
-
   protected
 
   def permitted_params

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'bricks#index'
+  root to: 'application#index'
 
-  resources :bricks
-
-  put '/bricks/promote/:id' => 'bricks#update', brick: { promote: true }, as: :promote_brick
+  resources :bricks, defaults: { format: :json }
 end

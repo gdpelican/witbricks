@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+%html
+%head
+  %title Wit Bricks!
+  = stylesheet_link_tag    'application', media: 'all'
+  = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js'
+  = javascript_include_tag 'application'
+  = csrf_meta_tags
+
+%body(ng-app="witbricks")
+  .bricks-wrapper{:"ng-controller" => "BricksCtrl"}
+    .view-brick{:"ng-if" => "current"}
+      .show-brick{:"ng-if" => "current.id"}
+        .quote {{current.quote}}
+        .author {{current.author}}
+        .links
+          %a.close-brick-link{:"ng-click" => "clear()" } Put it back
+          %a.promote-brick-link{:"ng-click" => "promote()" } Put it on top!
+      .new-brick{:"ng-if" => "!current.id"}
+        %form.simple-form{:"novalidate" => true}
+          .form-field
+            %label Quote:
+            %input{:"ng-model" => "current.quote"}
+          .form-field
+            %label Author:
+            %input{:"ng-model" => "current.author"}
+          %button{:"ng-click" => "create()"} Create!
+          %a{:"ng-click" => "clear()"} Cancel
+    %a.create-brick-link{:"ng-click" => "new()"}
+      Create Brick
+    .flex-wrapper{:"ng-init" => "index()" }
+      %a.briquette{                                      |
+        :"ng-class" => "{cloaked: isCurrent(brick.id)}", |
+        :"ng-repeat" => "brick in bricks",               |
+        :"ng-click" => "show(brick.id)" }

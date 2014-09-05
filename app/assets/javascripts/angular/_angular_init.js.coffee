@@ -1,0 +1,1 @@
+@witbricks = angular.module 'witbricks', []

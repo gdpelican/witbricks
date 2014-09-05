@@ -1,19 +1,15 @@
 class ResourceController < ApplicationController
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
 
   before_action :set,     only: [:show, :edit, :update, :destroy]
   before_action :build,   only: [:new, :create]
   before_action :collect, only: :index
 
   before_action :persist, only: [:create, :update]
-  before_action :display, only: [:new, :edit, :show, :create, :update]
+  before_action :display, only: [:new, :edit, :show, :create, :update, :index]
   before_action :destroy, only: :destroy
 
-  #override me!
   def self.actions
-    [:index, :new, :create, :show, :edit, :update, :destroy]
+    [:index, :new, :create, :show, :edit, :update, :destroy] # override me!
   end
 
   actions.each { |action| define_method action, ->{} }
@@ -33,7 +29,7 @@ class ResourceController < ApplicationController
   end
 
   def display
-    respond_with resource
+    respond_with resource || resources
   end
 
   def persist
