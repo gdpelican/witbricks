@@ -26,7 +26,7 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem 'dotenv'
-  gem "protractor-rails", github: 'gdpelican/protractor-rails', branch: 'protractor-spec-exit-code'
+  gem "protractor-rails"
 end
 
 group :test do
